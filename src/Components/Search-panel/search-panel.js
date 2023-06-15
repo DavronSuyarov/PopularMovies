@@ -1,7 +1,21 @@
-import './search-panel.css'
+import { useState } from "react";
+import "./search-panel.css";
 
-const SearchPanel = () => {
-  return <input type="text" className='form-control search-input' placeholder='Search movies...!' />
-}
+const SearchPanel = ({ searchHandler }) => {
+  const [value, setValue] = useState("");
 
-export default SearchPanel
+  return (
+    <input
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+        searchHandler(e.target.value);
+      }}
+      type="text"
+      className="form-control search-input"
+      placeholder="Search movies...!"
+    />
+  );
+};
+
+export default SearchPanel;
